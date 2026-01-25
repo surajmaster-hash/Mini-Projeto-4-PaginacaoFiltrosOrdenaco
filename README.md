@@ -1,16 +1,22 @@
 Pagination, Filtering, and Sorting API (ASP.NET Core)
 
 Overview
-This project demonstrates a predictable, enterprise-style list endpoint with pagination, filters, and sorting.
-It focuses on a clear query contract, safe defaults, explicit limits, and consistent error responses.
+This project delivers a predictable, enterprise-style product catalog API. The main goal is to avoid unbounded list endpoints by enforcing pagination, filters, sorting, and explicit limits through a clear query contract.
+
+What this project demonstrates
+- Query contract via DTOs instead of ad-hoc query strings
+- Safe defaults and explicit limits to protect the API
+- Incremental query building (filters -> sort -> count -> paging)
+- Paged responses with metadata for client-side navigation
+- Consistent error responses for invalid requests
 
 Features
-- Paged listing with metadata (page, pageSize, totalItems, totalPages)
+- Pagination with defaults and limits
 - Filters: name (contains), minPrice, maxPrice
-- Sorting by name, price, or createdAt with asc/desc direction
-- Safe defaults and limits to avoid unbounded queries
-- Consistent error contract for invalid requests
-- Swagger UI for visual API exploration
+- Sorting by name, price, or createdAt with asc/desc
+- CRUD endpoints for product management
+- Swagger UI for visual exploration
+- Seed data on first run for quick testing
 
 Tech Stack
 - .NET 10 (ASP.NET Core Web API)
@@ -18,7 +24,7 @@ Tech Stack
 - SQLite
 - Swagger (Swashbuckle)
 
-Endpoints
+API Endpoints
 - GET /products
 - GET /products/{id}
 - POST /products
@@ -34,7 +40,7 @@ Query Parameters (GET /products)
 - minPrice
 - maxPrice
 
-Paged Response Shape
+Response: Paged Result
 {
   "items": [ ... ],
   "page": 1,
@@ -52,9 +58,54 @@ Error Contract (HTTP 400 / 404)
   "status": 400
 }
 
+Expected HTTP Status Codes
+- 200 OK (successful GET)
+- 201 Created (successful POST)
+- 204 No Content (successful DELETE)
+- 400 Bad Request (validation errors)
+- 404 Not Found (resource does not exist)
+
+Common Errors
+- Invalid sortBy value
+  {
+    "title": "Invalid sortBy value.",
+    "detail": "Allowed values: name, price, createdAt.",
+    "status": 400
+  }
+- Invalid sortDir value
+  {
+    "title": "Invalid sortDir value.",
+    "detail": "Allowed values: asc, desc.",
+    "status": 400
+  }
+- Invalid price range
+  {
+    "title": "Invalid price range.",
+    "detail": "minPrice cannot be greater than maxPrice.",
+    "status": 400
+  }
+- Product not found
+  {
+    "title": "Product not found.",
+    "detail": "The requested product does not exist.",
+    "status": 404
+  }
+
+Validation Rules
+- page >= 1
+- pageSize in range 1..100
+- sortBy must be one of: name, price, createdAt
+- sortDir must be asc or desc
+- minPrice and maxPrice cannot be negative
+- minPrice cannot be greater than maxPrice
+- name filter max length: 200
+- product name required, max length: 200
+- product description max length: 1000
+- product price must be greater than zero
+
 How to Run
 1) dotnet run --project src/Catalog.Api
-2) Open Swagger UI: http://localhost:5107/swagger
+2) Swagger UI: http://localhost:5107/swagger
 
 Examples
 - /products?page=2&pageSize=20
@@ -77,6 +128,11 @@ PUT /products/{id}
   "description": "Lime sparkling water, 350ml.",
   "price": 2.95
 }
+
+Data & Persistence
+- SQLite database stored in the app working directory
+- Database is created automatically at startup
+- Seed data is inserted on first run
 
 Design Decisions
 - Max pageSize = 100 to prevent abuse
