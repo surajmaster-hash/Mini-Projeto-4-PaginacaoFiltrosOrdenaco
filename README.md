@@ -40,6 +40,18 @@ Query Parameters (GET /products)
 - minPrice
 - maxPrice
 
+Query DTO (ProductQueryParams)
+public class ProductQueryParams
+{
+    public int Page { get; set; } = 1;
+    public int PageSize { get; set; } = 20;
+    public string? SortBy { get; set; }
+    public string? SortDir { get; set; }
+    public string? Name { get; set; }
+    public decimal? MinPrice { get; set; }
+    public decimal? MaxPrice { get; set; }
+}
+
 Response: Paged Result
 {
   "items": [ ... ],
@@ -133,6 +145,9 @@ Data & Persistence
 - SQLite database stored in the app working directory
 - Database is created automatically at startup
 - Seed data is inserted on first run
+
+Performance and Indexes
+- For real datasets, indexes on createdAt and price help sorting and filtering performance.
 
 Design Decisions
 - Max pageSize = 100 to prevent abuse
